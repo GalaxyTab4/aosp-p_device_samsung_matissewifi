@@ -25,7 +25,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/mixer_paths.xml:system/etc/mixer_paths.xml
 
 # Ramdisk
-PRODUCT_PACKAGES += fstab.qcom
+PRODUCT_PACKAGES += \
+    fstab.qcom \
+    init.target.rc
 
 # Wifi
 PRODUCT_COPY_FILES += \
