@@ -216,8 +216,9 @@ PRODUCT_PACKAGES += \
     libcurl \
     libqsap_sdk \
     libQWiFiSoftApCfg \
-	libwcnss_qmi \
     wcnss_service
+
+# 	libwcnss_qmi \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.qc.sub.rdump.on=1 \
