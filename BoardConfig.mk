@@ -36,9 +36,8 @@ BOARD_KERNEL_CMDLINE := console=null androidboot.console=null androidboot.hardwa
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x1e00000
-TARGET_KERNEL_SOURCE := kernel/samsung/matissewifi
-TARGET_KERNEL_CONFIG := cyanogenmod_matissewifi_defconfig
-TARGET_KERNEL_SELINUX_CONFIG := selinux_defconfig
+TARGET_KERNEL_SOURCE := kernel/samsung/msm8226
+TARGET_KERNEL_CONFIG := matissewifi_defconfig
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
