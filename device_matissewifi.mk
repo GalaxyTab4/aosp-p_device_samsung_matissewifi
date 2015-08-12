@@ -25,7 +25,8 @@ $(call inherit-product-if-exists, vendor/samsung/matissewifi/matissewifi-vendor.
 
 # Permissions
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml
+    frameworks/native/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml \
+    device/samsung/matissewifi/platform.xml:system/etc/permissions/platform.xml
 
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := mdpi
@@ -216,9 +217,8 @@ PRODUCT_PACKAGES += \
     libcurl \
     libqsap_sdk \
     libQWiFiSoftApCfg \
-    wcnss_service
-
-# 	libwcnss_qmi \
+	libwcnss_qmi \
+    wcnss_service	
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.qc.sub.rdump.on=1 \
