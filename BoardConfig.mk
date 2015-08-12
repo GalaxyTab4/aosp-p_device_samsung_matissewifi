@@ -15,18 +15,18 @@
 # Inherit from msm8226-common
 -include device/samsung/msm8226-common/BoardConfigCommon.mk
 
-TARGET_OTA_ASSERT_DEVICE := s3ve3g,s3ve3gds,s3ve3gjv
+TARGET_OTA_ASSERT_DEVICE := matissewifi
 
-LOCAL_PATH := device/samsung/s3ve3g
+# Board
+TARGET_BOARD_INFO_FILE := device/samsung/matissewifi/board-info.txt
 
-# Audio
-AUDIO_FEATURE_SAMSUNG_DUAL_SIM := true
+LOCAL_PATH := device/samsung/matissewifi
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 
 # Init
-TARGET_LIBINIT_DEFINES_FILE := $(LOCAL_PATH)/init/init_s3ve3g.c
+TARGET_LIBINIT_DEFINES_FILE := $(LOCAL_PATH)/init/init_matissewifi.c
 TARGET_UNIFIED_DEVICE := true
 
 # Kernel
@@ -36,8 +36,8 @@ BOARD_KERNEL_CMDLINE := console=null androidboot.console=null androidboot.hardwa
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x1e00000
-TARGET_KERNEL_SOURCE := kernel/samsung/s3ve3g
-TARGET_KERNEL_CONFIG := cyanogenmod_s3ve3g_defconfig
+TARGET_KERNEL_SOURCE := kernel/samsung/matissewifi
+TARGET_KERNEL_CONFIG := cyanogenmod_matissewifi_defconfig
 TARGET_KERNEL_SELINUX_CONFIG := selinux_defconfig
 
 # Lights
@@ -50,9 +50,11 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00A7DEA0
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2097152000
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 12562627584
 TARGET_USERIMAGES_USE_F2FS := true
+TARGET_USERIMAGES_USE_EXT4 := true
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/fstab.qcom
+TARGET_RECOVERY_FSTYPE_MOUNT_OPTIONS := ext4=max_batch_time=0,commit=1,data=ordered,nobarrier,errors=panic,nodelalloc|f2fs=errors=recover
 
-# Releasetools
-TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/s3ve3g
+# inherit from the proprietary version
+-include vendor/samsung/matissewifi/BoardConfigVendor.mk
