@@ -411,7 +411,7 @@
 
 	<!-- ================================================================ -->
 	<!-- recognition Scenario -->
-	<path name="vr-main-mic">
+	<path name="voice-rec-mic">
 		<path name="main-mic" />
 		<ctl name="ADC1 Volume" value="19" />
 		<ctl name="DEC1 Volume" value="90" />
