@@ -21,7 +21,7 @@ vendor/lib/libacdbloader.so
 vendor/lib/libacdbrtac.so
 vendor/lib/libadiertac.so
 vendor/lib/libaudcal.so
-## vendor/lib/libcsd-client.so
+## vendor/lib/libcsd-client.so ##
 
 # Bluetooth
 bin/btnvtool
@@ -49,6 +49,11 @@ vendor/lib/libactuator_ak7345_camcorder.so
 vendor/lib/libactuator_ak7345_camera.so
 vendor/lib/libactuator_dw9804_camcorder.so
 vendor/lib/libactuator_dw9804_camera.so
+
+# NEW 530XXU1BOG2
+vendor/lib/libactuator_dw9804k_camcorder.so
+vendor/lib/libactuator_dw9804k_camera.so
+
 vendor/lib/libjpegdhw.so
 vendor/lib/libjpegehw.so
 vendor/lib/libmmcamera_faceproc.so
@@ -76,53 +81,103 @@ vendor/lib/libqomx_jpegdec.so
 vendor/lib/libqomx_jpegenc.so
 vendor/lib/libsensor1.so
 
+#NEW 530XXU1BOG2
+vendor/lib/libmmcamera_rohm_brce064gwz_eeprom.so
+vendor/lib/libmmcamera_s5k5e3yx.so
+vendor/lib/libmmcamera_s5k6b2yx.so
+
 # Camera chromatix
-#lib/B08QT_libTsAe.so
-#lib/B08QT_libTsAf.so
-#lib/B08QT_libTs_J_Accm.so
-#lib/B08QT_libTs_J_Awb.so
 lib/libAfSingle.so
-lib/libchromatix_s5k6a3yx_smart_stay.so
-lib/libchromatix_s5k6a3yx_vt.so
-lib/libchromatix_s5k6a3yx_vt_hd.so
 lib/libTsAe.so
 lib/libTsAf.so
 lib/libTs_J_Accm.so
 lib/libTs_J_Awb.so
-vendor/lib/B08QT_libchromatix_imx175_common.so
-vendor/lib/B08QT_libchromatix_imx175_common_res0.so
-vendor/lib/B08QT_libchromatix_imx175_common_res1.so
-vendor/lib/B08QT_libchromatix_imx175_default_video.so
-vendor/lib/B08QT_libchromatix_imx175_liveshot.so
-vendor/lib/B08QT_libchromatix_imx175_panorama.so
-vendor/lib/B08QT_libchromatix_imx175_preview.so
-vendor/lib/B08QT_libchromatix_imx175_snapshot.so
-vendor/lib/B08QT_libchromatix_imx175_video_hd.so
-vendor/lib/B08QT_libchromatix_imx175_zsl.so
-vendor/lib/B08QT_libchromatix_imx175_zslshot.so
+
+#lib/B08QT_libTsAe.so
+#lib/B08QT_libTsAf.so
+#lib/B08QT_libTs_J_Accm.so
+#lib/B08QT_libTs_J_Awb.so
+
+vendor/lib/C08QT_libchromatix_imx175_default_video.so
 vendor/lib/E08QL_libchromatix_s5k4h5yb_common.so
-vendor/lib/E08QL_libchromatix_s5k4h5yb_common_res0.so
-vendor/lib/E08QL_libchromatix_s5k4h5yb_common_res1.so
-vendor/lib/E08QL_libchromatix_s5k4h5yb_default_video.so
-vendor/lib/E08QL_libchromatix_s5k4h5yb_liveshot.so
-vendor/lib/E08QL_libchromatix_s5k4h5yb_panorama.so
-vendor/lib/E08QL_libchromatix_s5k4h5yb_preview.so
-vendor/lib/E08QL_libchromatix_s5k4h5yb_snapshot.so
 vendor/lib/E08QL_libchromatix_s5k4h5yb_video_hd.so
-vendor/lib/E08QL_libchromatix_s5k4h5yb_zsl.so
+vendor/lib/C08QT_libchromatix_imx175_preview.so
+vendor/lib/E08QL_libchromatix_s5k4h5yb_preview.so
+vendor/lib/C08QT_libchromatix_imx175_snapshot.so
+vendor/lib/B08QT_libchromatix_imx175_zsl.so
+vendor/lib/E08QL_libchromatix_s5k4h5yb_common_res1.so
+vendor/lib/C08QT_libchromatix_imx175_zslshot.so
+vendor/lib/B08QT_libchromatix_imx175_common_res1.so
+vendor/lib/E08QL_libchromatix_s5k4h5yb_panorama.so
+vendor/lib/B08QT_libchromatix_imx175_zslshot.so
+vendor/lib/B08QT_libchromatix_imx175_common.so
+vendor/lib/B08QT_libchromatix_imx175_video_hd.so
+vendor/lib/B08QT_libchromatix_imx175_liveshot.so
+vendor/lib/E08QL_libchromatix_s5k4h5yb_default_video.so
+vendor/lib/B08QT_libchromatix_imx175_preview.so
+vendor/lib/E08QL_libchromatix_s5k4h5yb_snapshot.so
 vendor/lib/E08QL_libchromatix_s5k4h5yb_zslshot.so
-vendor/lib/libchromatix_imx175_common.so
-vendor/lib/libchromatix_imx175_preview.so
-vendor/lib/libchromatix_s5k6a3yx_common.so
-vendor/lib/libchromatix_s5k6a3yx_default_video.so
-vendor/lib/libchromatix_s5k6a3yx_preview.so
-vendor/lib/libchromatix_s5k6a3yx_snapshot.so
-vendor/lib/libchromatix_s5k6a3yx_video_hd.so
+vendor/lib/C08QT_libchromatix_imx175_zsl.so
+vendor/lib/C08QT_libchromatix_imx175_liveshot.so
+vendor/lib/C08QT_libchromatix_imx175_common_res0.so
+vendor/lib/C08QT_libchromatix_imx175_video_hd.so
+vendor/lib/B08QT_libchromatix_imx175_default_video.so
+vendor/lib/B08QT_libchromatix_imx175_panorama.so
+vendor/lib/E08QL_libchromatix_s5k4h5yb_zsl.so
+vendor/lib/B08QT_libchromatix_imx175_common_res0.so
+vendor/lib/C08QT_libchromatix_imx175_common_res1.so
+vendor/lib/B08QT_libchromatix_imx175_snapshot.so
+vendor/lib/E08QL_libchromatix_s5k4h5yb_common_res0.so
+vendor/lib/E08QL_libchromatix_s5k4h5yb_liveshot.so
+vendor/lib/C08QT_libchromatix_imx175_common.so
+
+vendor/lib/libchromatix_s5k8b1yx_vt.so
 vendor/lib/libchromatix_s5k6a3yx_zsl.so
+vendor/lib/libchromatix_s5k6a3yx_preview.so
+vendor/lib/libchromatix_imx219_snapshot.so
+vendor/lib/libchromatix_imx219_common_res0.so
+vendor/lib/libchromatix_s5k8b1yx_snapshot.so
+vendor/lib/libchromatix_s5k5e3yx_common.so
+vendor/lib/libchromatix_imx219_default_video.so
+vendor/lib/libchromatix_s5k5e3yx_snapshot.so
+vendor/lib/libchromatix_s5k6a3yx_default_video.so
+vendor/lib/libchromatix_s5k8b1yx_preview.so
+vendor/lib/libchromatix_s5k8b1yx_video.so
+vendor/lib/libchromatix_s5k8b1yx_vt_hd.so
+vendor/lib/libchromatix_s5k5e3yx_preview.so
+vendor/lib/libchromatix_s5k8b1yx_zslshot.so
+vendor/lib/libchromatix_s5k6a3yx_video_hd.so
+vendor/lib/libchromatix_s5k6a3yx_snapshot.so
+vendor/lib/libchromatix_imx219_panorama.so
+vendor/lib/libchromatix_imx219_preview.so
+vendor/lib/libchromatix_imx219_zslshot.so
+vendor/lib/libchromatix_s5k8b1yx_smart_stay.so
+vendor/lib/libchromatix_s5k6a3yx_common.so
+vendor/lib/libchromatix_imx175_common.so
+vendor/lib/libchromatix_s5k5e3yx_zslshot.so
+vendor/lib/libchromatix_imx175_preview.so
+vendor/lib/libchromatix_imx219_liveshot.so
+vendor/lib/libchromatix_s5k8b1yx_common.so
+vendor/lib/libchromatix_s5k5e3yx_video.so
+vendor/lib/libchromatix_s5k8b1yx_pip.so
+vendor/lib/libchromatix_imx219_common.so
+
+lib/libchromatix_s5k6b2yx_vt.so
+lib/libchromatix_s5k6b2yx_preview.so
+lib/libchromatix_s5k6b2yx_smart_stay.so
+lib/libchromatix_s5k6b2yx_default_video.so
+lib/libchromatix_s5k6a3yx_vt_hd.so
+lib/libchromatix_s5k6b2yx_vt_hd.so
+lib/libchromatix_s5k6b2yx_zslshot.so
+lib/libchromatix_s5k6a3yx_smart_stay.so
+lib/libchromatix_s5k6b2yx_common.so
+lib/libchromatix_s5k6a3yx_vt.so
+
 
 # Camera firmware
-etc/B08QT_imx175_module_info.xml
 etc/E08QL_s5k4h5yb_module_info.xml
+etc/B08QT_imx175_module_info.xml
+etc/F08QU_imx219_module_info.xml
 etc/firmware/cpp_firmware_v1_1_1.fw
 etc/firmware/cpp_firmware_v1_1_6.fw
 etc/firmware/cpp_firmware_v1_2_0.fw
@@ -132,8 +187,8 @@ cameradata/datapattern_front_420sp.yuv
 # DRM
 bin/qseecomd
 framework/com.google.widevine.software.drm.jar
-## vendor/libdrmdecrypt.so
-## vendor/lib/drm/libdrmwvmplugin.so
+lib/libdrmdecrypt.so
+lib/drm/libdrmwvmplugin.so
 vendor/lib/mediadrm/libwvdrmengine.so
 vendor/lib/libdrmdiag.so
 vendor/lib/libdrmfs.so
@@ -142,13 +197,13 @@ vendor/lib/libQSEEComAPI.so
 vendor/lib/librpmb.so
 vendor/lib/libssd.so
 vendor/lib/libwvdrm_L1.so
-##vendor/lib/libwvm.so
+lib/libwvm.so
 vendor/lib/libWVStreamControlAPI_L1.so
 
 # GPS
 ##-app/com.qualcomm.location/com.qualcomm.location.apk
 ##etc/permissions/com.qualcomm.location.xml
-##lib/hw/flp.default.so
+vendor/lib/hw/flp.default.so
 lib/libloc_api_v02.so
 vendor/lib/libgeofence.so
 vendor/lib/libizat_core.so
@@ -162,7 +217,7 @@ vendor/lib/egl/libGLESv1_CM_adreno.so
 vendor/lib/egl/libGLESv2_adreno.so
 vendor/lib/egl/libq3dtools_adreno.so
 vendor/lib/libadreno_utils.so
-#vendor/lib/libbccQTI.so
+lib/libbcc.so
 vendor/lib/libC2D2.so
 vendor/lib/libc2d30-a3xx.so
 vendor/lib/libCB.so
@@ -201,8 +256,12 @@ vendor/lib/libSHIMDivxDrm.so
 -vendor/lib/libHevcSwDecoder.so
 
 # Perf
-bin/mpdecision
+##bin/mpdecision##
 ##vendor/lib/libqc-opt.so
+
+vendor/lib/libqti-perfd-client.so
+bin/perfd
+
 
 # Qualcomm framework
 vendor/lib/libdiag.so
@@ -250,7 +309,7 @@ vendor/lib/libthermalclient.so
 vendor/lib/libthermalioctl.so
 
 # Time services
--app/TimeService/TimeService.apk
+#-app/TimeService/TimeService.apk
 bin/time_daemon
 vendor/lib/libtime_genoff.so
 vendor/lib/libTimeService.so
