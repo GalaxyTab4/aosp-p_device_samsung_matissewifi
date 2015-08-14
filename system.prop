@@ -1,4 +1,4 @@
-# system.prop for falcon
+# system.prop for matissewifi
 
 # radio
 rild.libargs=-d /dev/smd0

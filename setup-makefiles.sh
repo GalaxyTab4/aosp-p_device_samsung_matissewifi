@@ -2,6 +2,6 @@
 
 set -e
 
-export DEVICE=falcon
-export VENDOR=motorola
+export DEVICE=matissewifi
+export VENDOR=samsung
 ./../../$VENDOR/msm8226-common/setup-makefiles.sh $@

@@ -2,6 +2,6 @@
 
 set -e
 
-export VENDOR=motorola
-export DEVICE=falcon
+export VENDOR=samsung
+export DEVICE=matissewifi
 ./../../$VENDOR/msm8226-common/extract-files.sh $@

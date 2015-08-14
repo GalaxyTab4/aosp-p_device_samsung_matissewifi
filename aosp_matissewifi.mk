@@ -15,14 +15,14 @@
 #
 
 # Inherit from those products. Most specific first.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 
-# Inherit from falcon device
-$(call inherit-product, device/motorola/falcon/device.mk)
+# Inherit from matissewifi device
+$(call inherit-product, device/samsung/matissewifi/device.mk)
 
 # Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := falcon
-PRODUCT_NAME := aosp_falcon
-PRODUCT_BRAND := motorola
-PRODUCT_MODEL := falcon
-PRODUCT_MANUFACTURER := motorola
+PRODUCT_DEVICE := matissewifi
+PRODUCT_NAME := aosp_matissewifi
+PRODUCT_BRAND := samsung
+PRODUCT_MODEL := matissewifi
+PRODUCT_MANUFACTURER := samsung

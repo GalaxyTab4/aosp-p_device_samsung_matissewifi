@@ -14,22 +14,22 @@
 # limitations under the License.
 
 # inherit from common msm8226-common
--include device/motorola/msm8226-common/BoardConfigCommon.mk
+-include device/samsung/msm8226-common/BoardConfigCommon.mk
 
-LOCAL_PATH := device/motorola/falcon
+LOCAL_PATH := device/samsung/matissewifi
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := xt1031,xt1032,xt1033,xt1034,falcon_umts,falcon_umtsds,falcon_cdma,falcon_retuaws,falcon,falcon_gpe
+TARGET_OTA_ASSERT_DEVICE := matissewifi
 
 # Board
-TARGET_BOARD_INFO_FILE := device/motorola/falcon/board-info.txt
+TARGET_BOARD_INFO_FILE := device/samsung/matissewifi/board-info.txt
 
 # Kernel
 BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/mkbootimg.mk
-TARGET_KERNEL_CONFIG := falcon_defconfig
+TARGET_KERNEL_CONFIG := matissewifi_defconfig
 
 # Init
-TARGET_INIT_VENDOR_LIB := libinit_falcon
+TARGET_INIT_VENDOR_LIB := libinit_matisse
 TARGET_UNIFIED_DEVICE := true
 
 # Partitions
@@ -43,4 +43,4 @@ TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
 TARGET_RECOVERY_FSTYPE_MOUNT_OPTIONS := ext4=max_batch_time=0,commit=1,data=ordered,nobarrier,errors=panic,nodelalloc|f2fs=errors=recover
 
 # inherit from the proprietary version
--include vendor/motorola/falcon/BoardConfigVendor.mk
+-include vendor/samsung/matissewifi/BoardConfigVendor.mk
