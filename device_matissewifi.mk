@@ -42,20 +42,6 @@ PRODUCT_PACKAGES += \
 	ntfsfix \
 	ntfs-3g
 
-# Packs
-PRODUCT_PACKAGES += \
-    libssh \
-	ssh \
-	sftp \
-	scp \
-	sshd \
-	ssh-keygen \
-	start-ssh
-
-PRODUCT_PACKAGES += \
-	ROMSettings \
-	LayerManager
-
 #CAF Branch
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.par.branch=LA.BF.1.1.2_rb1.24
@@ -160,10 +146,10 @@ PRODUCT_PACKAGES += \
     lights.msm8226
 
 # Media codecs
-PRODUCT_COPY_FILES += \
-    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
+#PRODUCT_COPY_FILES += \
+#    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
+#    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
+#    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
 
 # Power
 PRODUCT_PACKAGES += \
@@ -211,7 +197,8 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
 	device/qcom/msm8226/hostapd.conf:system/etc/hostapd/hostapd_default.conf \
-    vendor/qcom/opensource/wlan/prima/firmware_bin/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat 
+
+#    vendor/qcom/opensource/wlan/prima/firmware_bin/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat 
 
 PRODUCT_PACKAGES += \
     libcurl \
@@ -225,3 +212,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.ssr.restart_level=3 \
     persist.sys.qc.sub.rdump.max=0 \
     wifi.interface=wlan0
+
+# Ubuntu Overlay Files
+PRODUCT_COPY_FILES += \
+    device/motorola/msm8226-common/ubuntu/display.conf:system/ubuntu/etc/ubuntu-touch-session.d/android.conf \
+    device/motorola/msm8226-common/ubuntu/70-falcon.rules:system/ubuntu/lib/udev/rules.d/70-android.rules \
+    device/motorola/msm8226-common/ubuntu/ubuntu-location-service.override:system/ubuntu/etc/init/ubuntu-location-service.override
+

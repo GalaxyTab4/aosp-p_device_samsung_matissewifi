@@ -30,7 +30,7 @@
 #define LOC_API_ENG_ADAPTER_H
 
 #include <ctype.h>
-#include <hardware/gps.h>
+#include "hardware/gps.h"
 #include <loc.h>
 #include <loc_eng_log.h>
 #include <log_util.h>
@@ -141,7 +141,7 @@ public:
         return mLocApi->requestXtraServer();
     }
     inline enum loc_api_adapter_err
-        atlOpenStatus(int handle, int is_succ, char* apn, ApnIpType bearer, AGpsType agpsType)
+        atlOpenStatus(int handle, int is_succ, char* apn, AGpsBearerType bearer, AGpsType agpsType)
     {
         return mLocApi->atlOpenStatus(handle, is_succ, apn, bearer, agpsType);
     }

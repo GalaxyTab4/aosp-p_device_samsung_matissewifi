@@ -2,6 +2,16 @@
 # system.prop for msm8226
 #
 
+
+# Recovery
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.cwm.forbid_format=/fsg,/firmware,/persist,/boot
+
+#Ubuntu
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hardware=qcom \
+    ro.product.device=falcon
+
 # Use reference RIL for initial bringup
 #rild.libpath=/system/lib/libreference-ril.so
 rild.libpath=/vendor/lib/libril-qc-qmi-1.so

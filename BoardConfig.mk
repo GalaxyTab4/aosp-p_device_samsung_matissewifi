@@ -81,8 +81,8 @@ BOARD_HAVE_NEW_QC_GPS := true
 TARGET_USES_C2D_COMPOSITION := true
 
 # Kernel
-KERNEL_DEFCONFIG := matissewifi_defconfig
-TARGET_KERNEL_SOURCE := kernel
+TARGET_KERNEL_CONFIG := matissewifi_defconfig
+TARGET_KERNEL_SOURCE := kernel/samsung/matissewifi
 BOARD_KERNEL_CMDLINE := console=null androidboot.console=null androidboot.hardware=qcom user_debug=23 msm_rtb.filter=0x37 androidboot.bootdevice=msm_sdcc.1
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_KERNEL_BASE := 0x00000000
@@ -94,8 +94,8 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x1e00000
 TARGET_PROVIDES_LIBLIGHT := true
 
 # Partition sizes
-BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00A00000
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x10A7DEA0
+BOARD_BOOTIMAGE_PARTITION_SIZE := 0x20A7DEA0
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x20A7DEA0
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2097152000
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 12562627584
 
@@ -109,7 +109,7 @@ BOARD_USES_QCOM_HARDWARE := false
 TARGET_RECOVERY_FSTAB := device/samsung/matissewifi/ramdisk/fstab.qcom
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TARGET_USERIMAGES_USE_EXT4 := true
-TARGET_USERIMAGES_USE_F2FS := true
+#TARGET_USERIMAGES_USE_F2FS := true
 COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 
 # Release tools
@@ -117,37 +117,10 @@ TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/matissewifi
 
 # SELinux
 
--include device/qcom/sepolicy/sepolicy.mk
+#-include device/qcom/sepolicy/sepolicy.mk
 
 BOARD_SEPOLICY_DIRS += \
     device/samsung/matissewifi/sepolicy
-
-BOARD_SEPOLICY_UNION += \
-    akmd8963.te \
-    atvc.te \
-    batt_health.te \
-    bootanim.te \
-    device.te \
-    file_contexts \
-    file.te \
-    init.te \
-    init_shell.te \
-    keystore.te \
-    mediaserver.te \
-    mm-qcamerad.te \
-    mpdecision.te \
-    platform_app.te \
-    property_contexts \
-    property.te \
-	recovery.te \
-    rild.te \
-    rmt_storage.te \
-	sdcardd.te \
-    system_app.te \
-    ss_rdump.te \
-	time_daemon.te \
-    thermal-engine.te \
-	vold.te
 
 # Vendor init
 # TARGET_UNIFIED_DEVICE := true

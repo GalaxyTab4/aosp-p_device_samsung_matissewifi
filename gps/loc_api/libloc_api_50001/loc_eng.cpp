@@ -1,4 +1,4 @@
-/* Copyright (c) 2009-2014, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2009-2013, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -1324,11 +1324,11 @@ struct LocEngAtlOpenSuccess : public LocMsg {
     AgpsStateMachine* mStateMachine;
     const int mLen;
     char* mAPN;
-    const ApnIpType mBearerType;
+    const AGpsBearerType mBearerType;
     inline LocEngAtlOpenSuccess(AgpsStateMachine* statemachine,
                                 const char* name,
                                 int len,
-                                ApnIpType btype) :
+                                AGpsBearerType btype) :
         LocMsg(),
         mStateMachine(statemachine), mLen(len),
         mAPN(new char[len+1]), mBearerType(btype)
@@ -2086,9 +2086,9 @@ void loc_eng_agps_init(loc_eng_data_s_type &loc_eng_data, AGpsExtCallbacks* call
                                                       AGPS_TYPE_SUPL,
                                                       false);
 
-        if (adapter->mAgpsEnabled) {
-            loc_eng_data.adapter->sendMsg(new LocEngDataClientInit(&loc_eng_data));
+        loc_eng_data.adapter->sendMsg(new LocEngDataClientInit(&loc_eng_data));
 
+        if (adapter->mAgpsEnabled) {
             loc_eng_dmn_conn_loc_api_server_launch(callbacks->create_thread_cb,
                                                    NULL, NULL, &loc_eng_data);
         }
@@ -2147,7 +2147,7 @@ SIDE EFFECTS
 
 ===========================================================================*/
 int loc_eng_agps_open(loc_eng_data_s_type &loc_eng_data, AGpsExtType agpsType,
-                     const char* apn, ApnIpType bearerType)
+                     const char* apn, AGpsBearerType bearerType)
 {
     ENTRY_LOG_CALLFLOW();
     INIT_CHECK(loc_eng_data.adapter && loc_eng_data.agps_status_cb,

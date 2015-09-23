@@ -1,15 +1,11 @@
-# Battery health
-type batt_health_data_file, file_type, data_file_type;
-type sysfs_batt_health, fs_type, sysfs_type;
+# Qualcomm MSM Interface (QMI) socket types
+type qmux_audio_socket, file_type;
+type qmux_bluetooth_socket, file_type;
+type qmux_gps_socket, file_type;
+type qmux_radio_socket, file_type;
 
-# CMHW
-type display_sysfs, fs_type, sysfs_type;
-type vibeamp_sysfs, fs_type, sysfs_type;
+type firmware_file, fs_type;
 
-# PDS / FSG
-type pds_file, file_type;
-type fsg_file, fs_type, contextmount_type;
-
-# RAMDUMP
-type ram_dump_logs, file_type, data_file_type;
-
+allow efs_file rootfs:filesystem associate;
+allow cache_file rootfs:filesystem associate;
+allow asec_apk_file rootfs:filesystem associate;

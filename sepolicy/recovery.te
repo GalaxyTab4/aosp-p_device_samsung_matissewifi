@@ -1,2 +1,0 @@
-allow recovery labeledfs:filesystem remount;
-allow recovery userdata_block_device:blk_file { read ioctl open };
