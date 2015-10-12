@@ -99,7 +99,7 @@ public:
                         enum loc_sess_status status,
                         LocPosTechMask loc_technology_mask =
                                   LOC_POS_TECH_MASK_DEFAULT);
-    void reportSv(GpsSvStatus &svStatus,
+    void reportSv(GnssSvStatus &svStatus,
                   GpsLocationExtended &locationExtended,
                   void* svExt);
     void reportStatus(GpsStatusValue status);
@@ -115,6 +115,8 @@ public:
     void reportDataCallOpened();
     void reportDataCallClosed();
     void requestNiNotify(GpsNiNotification &notify, const void* data);
+    void saveSupportedMsgList(uint64_t supportedMsgList);
+    void reportGpsMeasurementData(GpsData &gpsMeasurementData);
 
     // downward calls
     // All below functions are to be defined by adapter specific modules:
@@ -209,6 +211,18 @@ public:
       -1 on failure
      */
     virtual int getGpsLock(void);
+
+    virtual enum loc_api_adapter_err setXtraVersionCheck(enum xtra_version_check check);
+
+    /*
+      Update gps reporting events
+     */
+    virtual int updateRegistrationMask(LOC_API_ADAPTER_EVENT_MASK_T event,
+                                       loc_registration_mask_status isEnabled);
+    /*
+      Check if the modem support the service
+     */
+    virtual bool gnssConstellationConfig();
 };
 
 typedef LocApiBase* (getLocApi_t)(const MsgTask* msgTask,

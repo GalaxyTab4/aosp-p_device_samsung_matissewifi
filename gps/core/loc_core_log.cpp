@@ -91,6 +91,7 @@ const char* loc_get_position_mode_name(GpsPositionMode mode)
 static loc_name_val_s_type loc_eng_position_recurrences[] =
 {
     NAME_VAL( GPS_POSITION_RECURRENCE_PERIODIC ),
+    
     NAME_VAL( GPS_POSITION_RECURRENCE_SINGLE )
 };
 static int loc_eng_position_recurrence_num = sizeof(loc_eng_position_recurrences) / sizeof(loc_name_val_s_type);
@@ -116,21 +117,6 @@ static loc_name_val_s_type loc_eng_aiding_data_bits[] =
     NAME_VAL( GPS_DELETE_SADATA ),
     NAME_VAL( GPS_DELETE_RTI ),
     NAME_VAL( GPS_DELETE_CELLDB_INFO ),
-    NAME_VAL( GPS_DELETE_ALMANAC_CORR ),
-    NAME_VAL( GPS_DELETE_FREQ_BIAS_EST ),
-    NAME_VAL( GLO_DELETE_EPHEMERIS ),
-    NAME_VAL( GLO_DELETE_ALMANAC ),
-    NAME_VAL( GLO_DELETE_SVDIR ),
-    NAME_VAL( GLO_DELETE_SVSTEER ),
-    NAME_VAL( GLO_DELETE_ALMANAC_CORR ),
-    NAME_VAL( GPS_DELETE_TIME_GPS ),
-    NAME_VAL( GLO_DELETE_TIME ),
-    NAME_VAL( BDS_DELETE_SVDIR ),
-    NAME_VAL( BDS_DELETE_SVSTEER ),
-    NAME_VAL( BDS_DELETE_TIME ),
-    NAME_VAL( BDS_DELETE_ALMANAC_CORR ),
-    NAME_VAL( BDS_DELETE_EPHEMERIS ),
-    NAME_VAL( BDS_DELETE_ALMANAC ),
     NAME_VAL( GPS_DELETE_ALL)
 };
 static int loc_eng_aiding_data_bit_num = sizeof(loc_eng_aiding_data_bits) / sizeof(loc_name_val_s_type);

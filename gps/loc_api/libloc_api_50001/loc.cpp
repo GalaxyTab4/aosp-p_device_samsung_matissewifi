@@ -1,4 +1,4 @@
-/* Copyright (c) 2011-2013, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2011-2015, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -68,7 +68,6 @@ static int  loc_set_position_mode(GpsPositionMode mode, GpsPositionRecurrence re
                                   uint32_t min_interval, uint32_t preferred_accuracy,
                                   uint32_t preferred_time);
 static const void* loc_get_extension(const char* name);
-
 // Defines the GpsInterface in gps.h
 static const GpsInterface sLocEngInterface =
 {
@@ -121,6 +120,16 @@ const GpsNiInterface sLocEngNiInterface =
    sizeof(GpsNiInterface),
    loc_ni_init,
    loc_ni_respond,
+};
+
+static int loc_gps_measurement_init(GpsMeasurementCallbacks* callbacks);
+static void loc_gps_measurement_close();
+
+static const GpsMeasurementInterface sLocEngGpsMeasurementInterface =
+{
+    sizeof(GpsMeasurementInterface),
+    loc_gps_measurement_init,
+    loc_gps_measurement_close
 };
 
 static void loc_agps_ril_init( AGpsRilCallbacks* callbacks );
@@ -271,16 +280,31 @@ static int loc_init(GpsCallbacks* callbacks)
                                     callbacks->create_thread_cb, /* create_thread_cb */
                                     NULL, /* location_ext_parser */
                                     NULL, /* sv_ext_parser */
-                                    callbacks->request_utc_time_cb /* request_utc_time_cb */};
+                                    callbacks->request_utc_time_cb, /* request_utc_time_cb */
+                                    };
 
     gps_loc_cb = callbacks->location_cb;
     gps_sv_cb = callbacks->sv_status_cb;
 
     retVal = loc_eng_init(loc_afw_data, &clientCallbacks, event, NULL);
-    loc_afw_data.adapter->requestUlp(gps_conf.CAPABILITIES);
-    loc_afw_data.adapter->mAgpsEnabled = !loc_afw_data.adapter->hasAgpsExt();
-    loc_afw_data.adapter->mCPIEnabled = !loc_afw_data.adapter->hasCPIExt();
+    loc_afw_data.adapter->mSupportsAgpsRequests = !loc_afw_data.adapter->hasAgpsExtendedCapabilities();
+    loc_afw_data.adapter->mSupportsPositionInjection = !loc_afw_data.adapter->hasCPIExtendedCapabilities();
+    loc_afw_data.adapter->mSupportsTimeInjection = !loc_afw_data.adapter->hasCPIExtendedCapabilities();
+    loc_afw_data.adapter->setGpsLockMsg(0);
+    loc_afw_data.adapter->requestUlp(getCarrierCapabilities());
+    loc_afw_data.adapter->setXtraUserAgent();
 
+    if(retVal) {
+        LOC_LOGE("loc_eng_init() fail!");
+        goto err;
+    }
+
+    loc_afw_data.adapter->setPowerVoteRight(loc_get_target() == TARGET_QCA1530);
+    loc_afw_data.adapter->setPowerVote(true);
+
+    LOC_LOGD("loc_eng_init() success!");
+
+err:
     EXIT_LOG(%d, retVal);
     return retVal;
 }
@@ -457,11 +481,13 @@ DEPENDENCIES
 RETURN VALUE
    0          : Successful
    error code : Failure
-
+'atom-text-editor.conflicted':
+  'alt-m 2': 'merge-conflicts:accept-theirs'
 SIDE EFFECTS
    N/A
 ===========================================================================*/
-static int loc_inject_location(double latitude, double longitude, float accuracy)
+static int loc_inject_location(double latitude, double longitud'atom-text-editor.conflicted':
+  'alt-m 2': 'merge-conflicts:accept-theirs'e, float accuracy)
 {
     static bool initialized = false;
     static bool enable_cpi = true;
@@ -545,7 +571,7 @@ const GpsGeofencingInterface* get_geofence_interface(void)
     }
     dlerror();    /* Clear any existing error */
     get_gps_geofence_interface = (get_gps_geofence_interface_function)dlsym(handle, "gps_geofence_get_interface");
-    if ((error = dlerror()) != NULL)  {
+    if ((error = dlerror()) != NULL || NULL == get_gps_geofence_interface)  {
         LOC_LOGE ("%s, dlsym for get_gps_geofence_interface failed, error = %s\n", __func__, error);
         goto exit;
      }
@@ -604,6 +630,18 @@ const void* loc_get_extension(const char* name)
        if ((gps_conf.CAPABILITIES | GPS_CAPABILITY_GEOFENCING) == gps_conf.CAPABILITIES ){
            ret_val = get_geofence_interface();
        }
+   }
+   else if (strcmp(name, SUPL_CERTIFICATE_INTERFACE) == 0)
+   {
+       ret_val = &sLocEngAGpsCertInterface;
+   }
+   else if (strcmp(name, GNSS_CONFIGURATION_INTERFACE) == 0)
+   {
+       ret_val = &sLocEngConfigInterface;
+   }
+   else if (strcmp(name, GPS_MEASUREMENT_INTERFACE) == 0)
+   {
+       ret_val = &sLocEngGpsMeasurementInterface;
    }
    else
    {
@@ -761,7 +799,8 @@ FUNCTION    loc_agps_open_with_apn_type
 
 DESCRIPTION
    This function is called when on-demand data connection opening is successful.
-It should inform ARM 9 about the data open result.
+It should inform ARM 9 about the data open result.'atom-text-editor.conflicted':
+  'alt-m 2': 'merge-conflicts:accept-theirs'
 
 DEPENDENCIES
    NONE
@@ -802,7 +841,10 @@ SIDE EFFECTS
 static int loc_xtra_init(GpsXtraCallbacks* callbacks)
 {
     ENTRY_LOG();
-    int ret_val = loc_eng_xtra_init(loc_afw_data, (GpsXtraExtCallbacks*)callbacks);
+    GpsXtraExtCallbacks extCallbacks;
+    memset(&extCallbacks, 0, sizeof(extCallbacks));
+    extCallbacks.download_request_cb = callbacks->download_request_cb;
+    int ret_val = loc_eng_xtra_init(loc_afw_data, &extCallbacks);
 
     EXIT_LOG(%d, ret_val);
     return ret_val;
@@ -832,6 +874,56 @@ static int loc_xtra_inject_data(char* data, int length)
 
     EXIT_LOG(%d, ret_val);
     return ret_val;
+}
+
+/*===========================================================================
+FUNCTION    loc_gps_measurement_init
+
+DESCRIPTION
+   This function initializes the gps measurement interface
+
+DEPENDENCIES
+   NONE
+
+RETURN VALUE
+   None
+
+SIDE EFFECTS
+   N/A
+
+===========================================================================*/
+static int loc_gps_measurement_init(GpsMeasurementCallbacks* callbacks)
+{
+    ENTRY_LOG();
+    int ret_val = loc_eng_gps_measurement_init(loc_afw_data,
+                                               callbacks);
+
+    EXIT_LOG(%d, ret_val);
+    return ret_val;
+}
+
+/*===========================================================================
+FUNCTION    loc_gps_measurement_close
+
+DESCRIPTION
+   This function closes the gps measurement interface
+
+DEPENDENCIES
+   NONE
+
+RETURN VALUE
+   None
+
+SIDE EFFECTS
+   N/A
+
+===========================================================================*/
+static void loc_gps_measurement_close()
+{
+    ENTRY_LOG();
+    loc_eng_gps_measurement_close(loc_afw_data);
+
+    EXIT_LOG(%s, VOID_RET);
 }
 
 /*===========================================================================

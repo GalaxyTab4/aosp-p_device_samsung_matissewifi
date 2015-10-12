@@ -91,6 +91,7 @@ typedef struct loc_eng_data_s
     gps_acquire_wakelock           acquire_wakelock_cb;
     gps_release_wakelock           release_wakelock_cb;
     gps_request_utc_time           request_utc_time_cb;
+    gps_measurement_callback       gps_measurement_cb;
     boolean                        intermediateFix;
     AGpsStatusValue                agps_status;
     loc_eng_xtra_data_s_type       xtra_module_data;
@@ -232,7 +233,12 @@ extern void loc_eng_ni_request_handler(loc_eng_data_s_type &loc_eng_data,
                                    const GpsNiNotification *notif,
                                    const void* passThrough);
 extern void loc_eng_ni_reset_on_engine_restart(loc_eng_data_s_type &loc_eng_data);
-int loc_eng_read_config(void);
+
+void loc_eng_configuration_update (loc_eng_data_s_type &loc_eng_data,
+                                   const char* config_data, int32_t length);
+int loc_eng_gps_measurement_init(loc_eng_data_s_type &loc_eng_data,
+                                 GpsMeasurementCallbacks* callbacks);
+void loc_eng_gps_measurement_close(loc_eng_data_s_type &loc_eng_data);
 
 #ifdef __cplusplus
 }
