@@ -122,7 +122,7 @@ af.resampler.quality=4
 audio.offload.buffer.size.kb=32
 
 #Enable offload audio video playback by default
-av.offload.enable=false
+audio.offload.video=false
 
 #enable voice path for PCM VoIP by default
 use.voice.path.for.pcm.voip=true
