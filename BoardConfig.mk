@@ -119,36 +119,6 @@ TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/matissewifi
 
 -include device/qcom/sepolicy/sepolicy.mk
 
-BOARD_SEPOLICY_DIRS += \
-    device/samsung/matissewifi/sepolicy
-
-BOARD_SEPOLICY_UNION += \
-    akmd8963.te \
-    atvc.te \
-    batt_health.te \
-    bootanim.te \
-    device.te \
-    file_contexts \
-    file.te \
-    init.te \
-    init_shell.te \
-    keystore.te \
-    mediaserver.te \
-    mm-qcamerad.te \
-    mpdecision.te \
-    platform_app.te \
-    property_contexts \
-    property.te \
-	recovery.te \
-    rild.te \
-    rmt_storage.te \
-	sdcardd.te \
-    system_app.te \
-    ss_rdump.te \
-	time_daemon.te \
-    thermal-engine.te \
-	vold.te
-
 # Vendor init
 # TARGET_UNIFIED_DEVICE := true
 TARGET_INIT_VENDOR_LIB := libinit_msm
