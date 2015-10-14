@@ -107,8 +107,8 @@ TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/matissewifi
 
 # Vendor init
 # TARGET_UNIFIED_DEVICE := true
-TARGET_INIT_VENDOR_LIB := libinit_msm
-TARGET_LIBINIT_DEFINES_FILE := device/samsung/matissewifi/init/init_matissewifi.c
+#TARGET_INIT_VENDOR_LIB := libinit_msm
+#TARGET_LIBINIT_DEFINES_FILE := device/samsung/matissewifi/init/init_matissewifi.c
 
 # Vold
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
