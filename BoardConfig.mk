@@ -22,14 +22,13 @@ TARGET_SPECIFIC_HEADER_PATH += device/samsung/matissewifi/include
 # Architecture
 TARGET_NO_BOOTLOADER := true
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno305
+TARGET_BOARD_PLATFORM := msm8226
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := matissewifi, matissewifixx, matisse3g, matisse3gxx
 
 # Board
 TARGET_BOARD_INFO_FILE := device/samsung/matissewifi/board-info.txt
-
-#TARGET_USES_LOGD := false
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
@@ -45,6 +44,8 @@ AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
 AUDIO_FEATURE_ENABLED_PCM_OFFLOAD := true
 TARGET_USES_QCOM_MM_AUDIO := true
 
+
+
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/matissewifi/bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -52,7 +53,7 @@ BOARD_HAVE_BLUETOOTH_QCOM := true
 BLUETOOTH_HCI_USE_MCT := true
 
 # Build
-# TARGET_SYSTEMIMAGE_USE_SQUISHER := true
+TARGET_SYSTEMIMAGE_USE_SQUISHER := true
 
 # Camera
 USE_DEVICE_SPECIFIC_CAMERA := true
@@ -76,7 +77,7 @@ TARGET_KERNEL_SOURCE := kernel
 BOARD_KERNEL_CMDLINE := console=null androidboot.console=null androidboot.hardware=qcom user_debug=23 msm_rtb.filter=0x37 androidboot.bootdevice=msm_sdcc.1
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_KERNEL_BASE := 0x00000000
-BOARD_RAMDISK_OFFSET := 0x02000000
+BOARD_RAMDISK_OFFSET := 0x02000000 
 BOARD_KERNEL_TAGS_OFFSET := 0x1e00000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x1e00000
 
@@ -86,8 +87,7 @@ TARGET_PROVIDES_LIBLIGHT := true
 # Partition sizes
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00A00000
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x10A7DEA0
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2097152000
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 12562627584
+
 
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := false
@@ -106,7 +106,7 @@ TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/matissewifi
 -include device/qcom/sepolicy/sepolicy.mk
 
 # Vendor init
-# TARGET_UNIFIED_DEVICE := true
+#TARGET_UNIFIED_DEVICE := true
 #TARGET_INIT_VENDOR_LIB := libinit_msm
 #TARGET_LIBINIT_DEFINES_FILE := device/samsung/matissewifi/init/init_matissewifi.c
 
@@ -124,7 +124,15 @@ BOARD_HOSTAPD_DRIVER := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_qcwcn
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_qcwcn
 #TARGET_PROVIDES_WCNSS_QMI := true
-TARGET_USES_QCOM_WCNSS_QMI := true
+#TARGET_USES_QCOM_WCNSS_QMI := true
 WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/wlan.ko"
 WIFI_DRIVER_MODULE_NAME := "wlan"
 BOARD_WLAN_DEVICE := qcwcn
+
+
+
+
+
+
+
+

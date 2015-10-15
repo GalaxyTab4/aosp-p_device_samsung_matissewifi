@@ -106,8 +106,9 @@ PRODUCT_PACKAGES += \
     libcurl \
     libqsap_sdk \
     libQWiFiSoftApCfg \
-	libwcnss_qmi \
     wcnss_service	
+
+#	libwcnss_qmi \
 
 PRODUCT_PACKAGES += \
     p2p_supplicant_overlay.conf \

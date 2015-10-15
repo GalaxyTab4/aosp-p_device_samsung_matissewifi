@@ -40,8 +40,8 @@ on fs
     # results in failure to launch late-start class.
 
     wait /dev/block/platform/msm_sdcc.1/by-name/cache
-    exec /system/bin/e2fsck -y /dev/block/platform/msm_sdcc.1/by-name/cache
-    exec /system/bin/logwrapper /system/bin/mount_ext4.sh cache /dev/block/platform/msm_sdcc.1/by-name/cache /cache
+    check_fs /dev/block/platform/msm_sdcc.1/by-name/cache ext4
+    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/cache /cache nosuid nodev noatime noauto_da_alloc,discard,journal_async_commit,errors=panic
 
     wait /dev/block/platform/msm_sdcc.1/by-name/persist
     check_fs /dev/block/platform/msm_sdcc.1/by-name/persist ext4
@@ -55,8 +55,8 @@ on fs
     restorecon -R /efs
     chmod 0644 /dev/hw_random
 
-
-on fs_sec_selinux
+	
+on fs_sec_selinux 
 		wait /dev/block/platform/msm_sdcc.1/by-name/modem
 		mount vfat /dev/block/platform/msm_sdcc.1/by-name/modem /firmware-modem ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337,context=u:object_r:firmware:s0
 
@@ -119,13 +119,20 @@ service mpdecision /system/bin/mpdecision --avg_comp
    user root
    disabled
 
-service thermal-engine /system/bin/thermal-engine -c /etc/thermal-engine-8226.conf
+service thermal-engine /system/bin/thermal-engine
+   class main
+   user root
+   group root
+
+service qrngp /system/bin/qrngp
     class main
     user root
-    socket thermal-send-client stream 0666 system system
-    socket thermal-recv-client stream 0660 system system
-    socket thermal-recv-passive-client stream 0666 system system
     group root
+    oneshot
+    disabled
+
+on property:sys.boot_completed=1
+    start qrngp
 
 service qseecomd /system/bin/qseecomd
     class core
