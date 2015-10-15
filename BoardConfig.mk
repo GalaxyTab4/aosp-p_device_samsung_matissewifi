@@ -72,7 +72,7 @@ BOARD_VENDOR_QCOM_LOC_PDK_FEATURE_SET := true
 TARGET_USES_C2D_COMPOSITION := true
 
 # Kernel
-KERNEL_DEFCONFIG := matissewifi_defconfig
+KERNEL_DEFCONFIG := cyanogenmod_s3ve3g_defconfig
 TARGET_KERNEL_SOURCE := kernel
 BOARD_KERNEL_CMDLINE := console=null androidboot.console=null androidboot.hardware=qcom user_debug=23 msm_rtb.filter=0x37 androidboot.bootdevice=msm_sdcc.1
 BOARD_KERNEL_SEPARATED_DT := true

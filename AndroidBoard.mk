@@ -17,7 +17,7 @@
 LOCAL_PATH := $(call my-dir)
 
 BOARD_KERNEL_SEPARATED_DT := true
-KERNEL_DEFCONFIG := matissewifi_defconfig
+KERNEL_DEFCONFIG := cyanogenmod_s3ve3g_defconfig
 KERNEL_DIR := kernel
 
 -include $(TOP)/$(KERNEL_DIR)/AndroidKernel.mk
