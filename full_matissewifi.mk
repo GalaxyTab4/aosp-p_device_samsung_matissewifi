@@ -21,7 +21,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 $(call inherit-product, device/samsung/matissewifi/device_matissewifi.mk)
 
 # Inherit some common AOSParadox stuff.
-$(call inherit-product, vendor/aosparadox/common-wifionly.mk)
+$(call inherit-product, vendor/aosparadox/common.mk)
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := matissewifi
