@@ -1,5 +1,5 @@
 #
-# system.prop for falcon
+# system.prop for matissewifi
 #
 ro.build.characteristics=nosdcard
 persist.radio.manual_mode_timer=60

@@ -18,16 +18,16 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit from falcon device
-$(call inherit-product, device/motorola/falcon/device_falcon.mk)
+$(call inherit-product, device/motorola/falcon/device_matissewifi.mk)
 
 # Inherit some common AOSParadox stuff.
 $(call inherit-product, vendor/aosparadox/common.mk)
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := falcon
-PRODUCT_NAME := full_falcon
-PRODUCT_BRAND := motorola
-PRODUCT_MODEL := Moto G
-PRODUCT_MANUFACTURER := motorola
+PRODUCT_DEVICE := matissewifi
+PRODUCT_NAME := full_matissewifi
+PRODUCT_BRAND := samsung
+PRODUCT_MODEL := SM-T530
+PRODUCT_MANUFACTURER := samsung
 
-PRODUCT_GMS_CLIENTID_BASE := android-motorola
+PRODUCT_GMS_CLIENTID_BASE := android-samsung
