@@ -73,6 +73,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.image-dex2oat-filter=everything \
     dalvik.vm.dex2oat-filter=everything
 
+# Camera
+PRODUCT_PACKAGES += \
+    camera.msm8226 \
+    libboringssl-compat \
+    libxml2
+
 # FRP
 #PRODUCT_PROPERTY_OVERRIDES += \
 #    ro.frp.pst=/dev/block/platform/msm_sdcc.1/by-name/frp
