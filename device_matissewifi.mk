@@ -79,9 +79,9 @@ PRODUCT_PACKAGES += \
     libboringssl-compat \
     libxml2
 
-# FRP
-#PRODUCT_PROPERTY_OVERRIDES += \
-#    ro.frp.pst=/dev/block/platform/msm_sdcc.1/by-name/frp
+# Samsung symbols
+PRODUCT_PACKAGES += \
+    libsamsung_symbols
 
 # GPS
 #PRODUCT_COPY_FILES += \
