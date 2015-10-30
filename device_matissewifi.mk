@@ -19,10 +19,16 @@ PRODUCT_PACKAGE_OVERLAYS += device/samsung/matissewifi/overlay
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
-$(call inherit-product-if-exists, vendor/samsung/matissewifi/matissewifi-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/matisse/matisse-vendor.mk)
 
-PRODUCT_AAPT_CONFIG := normal
-PRODUCT_AAPT_PREF_CONFIG := xhdpi
+# Screen density
+PRODUCT_AAPT_CONFIG := large
+PRODUCT_AAPT_PREF_CONFIG := mdpi
+PRODUCT_LOCALES += mdpi
+
+# Boot animation
+TARGET_SCREEN_HEIGHT := 800
+TARGET_SCREEN_WIDTH := 1280
 
 # CAF Branch
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -95,10 +101,6 @@ PRODUCT_PACKAGES += \
 # Lights
 PRODUCT_PACKAGES += \
     lights.msm8226
-
-# samsung
-PRODUCT_PACKAGES += \
-    libmoto-log
 
 # Power
 PRODUCT_PACKAGES += \

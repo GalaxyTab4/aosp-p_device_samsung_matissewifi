@@ -73,7 +73,7 @@ TARGET_USES_C2D_COMPOSITION := true
 
 # Kernel
 BOARD_KERNEL_SEPARATED_DT := true
-KERNEL_DEFCONFIG := matissewifi_defconfig
+KERNEL_DEFCONFIG := cyanogenmod_matissewifi_defconfig
 TARGET_KERNEL_SOURCE := kernel
 BOARD_KERNEL_CMDLINE := console=null androidboot.console=null androidboot.hardware=qcom user_debug=23 msm_rtb.filter=0x37 androidboot.selinux=permissive
 BOARD_RAMDISK_OFFSET := 0x02000000 
@@ -109,9 +109,9 @@ BOARD_SEPOLICY_DIRS += \
     device/samsung/matissewifi/sepolicy
 
 # Vendor init
-#TARGET_UNIFIED_DEVICE := true
-#TARGET_INIT_VENDOR_LIB := libinit_msm
-#TARGET_LIBINIT_DEFINES_FILE := device/samsung/matissewifi/init/init_matissewifi.c
+TARGET_UNIFIED_DEVICE := true
+TARGET_INIT_VENDOR_LIB := libinit_msm
+TARGET_LIBINIT_DEFINES_FILE := device/samsung/matissewifi/init/init_matissewifi.cpp
 
 # Vold
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
